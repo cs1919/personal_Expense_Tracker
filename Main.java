@@ -1,3 +1,10 @@
+//imports
+import java.io.*;
+import java.nio.file.Files;
+import java.util.*;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
         // Console menu: switch-case to interact with user
@@ -28,6 +35,10 @@ public class Main {
                     System.out.print("Enter description: ");
                     String description = scanner.nextLine();
                     
+                    if(date.isEmpty()){
+                        System.out.println("Taking today's date as default.");
+                        date = LocalDate.now().toString(); // use today's date if empty
+                    }
                     Expense expense = new Expense(date, category, amount, description);
                     tracker.addExpense(expense);
                     break;
